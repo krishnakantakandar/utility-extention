@@ -1,25 +1,31 @@
+
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
-  "icons": [
+  "manifest_version":2,
+  "version": "1.0"
+  ,"name" :"contest",
+  "icons":{"128":"coding.png"}
+  ,
+
+"content_scripts": [
     {
-      "src": "favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
-    },
-    {
-      "src": "logo192.png",
-      "type": "image/png",
-      "sizes": "192x192"
-    },
-    {
-      "src": "logo512.png",
-      "type": "image/png",
-      "sizes": "512x512"
+      "matches": ["http://*/*", "https://*/*"],
+      "js": [
+        "options.js"
+      ]
     }
   ],
-  "start_url": ".",
-  "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+"permissions":[
+  "storage","notifications"
+],
+"options_page":"options.html",
+
+  "browser_action":{
+    "default_popup":"index.html"
+    ,"default_title":"open the poup"
+  },
+  "background" : {
+  "scripts" : ["background.js"],
+  "persistent": false
+},
+ "content_security_policy": "script-src 'self' 'sha256-sKCTA1GG4wlHv3LR3gF7N/hhqfZ5TK1smV/NfcWXS4Y=';  object-src 'self'"
 }

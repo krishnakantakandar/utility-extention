@@ -1,23 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+import MainPageComponent from "./component/MainPageComponent";
+import Temp from "./WeatherComponent/Temp";
+import NotePad from "./notePadComponent/NotePad";
 
 function App() {
+  const whichExtention = localStorage.getItem("extentionIs");
+
+  if (whichExtention === "weather") {
+    console.log("weather");
+    return (
+      <div className="App">
+        <Temp></Temp>
+      </div>
+    );
+  }
+  if (whichExtention === "coding") {
+    console.log("coding");
+    return (
+      <div className="App">
+        <MainPageComponent></MainPageComponent>
+      </div>
+    );
+  }
+
+  if (whichExtention === "notePad") {
+    return (
+      <div className="App">
+        <NotePad></NotePad>
+      </div>
+    );
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <MainPageComponent></MainPageComponent>
     </div>
   );
 }
